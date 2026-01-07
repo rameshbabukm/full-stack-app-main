@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Backend Spring Boot application
+  app:
+    build: ./task-service # Set context to the task-service directory
+    container_name: task-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/taskdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+  # PostgreSQL Database
+  db:
+    image: postgres:16
+    container_name: task-postgres
+    environment:
+      POSTGRES_DB: taskdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # Frontend React application
+  frontend:
+    build:
+      context: ./my-react-app # Set context to the my-react-app directory
+      dockerfile: Dockerfile # Assumes your React app's Dockerfile is inside my-react-app
+    container_name: task-frontend
+    ports:
+      - "8000:80" # Map host port 80 to container port 80 (where Nginx serves the app)
+    depends_on:
+      - app # Ensure the backend is up before the frontend tries to connect
+
+volumes:
+  pgdata:
