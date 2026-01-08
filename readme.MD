@@ -2,7 +2,7 @@
 
 *Requirements*
 
-* Maven and Java (17+)
+* Maven and Java (17+) and Go(1.25+)
 * Node and NPM
 * Docker
 
@@ -13,6 +13,12 @@
 ```bash
 cd task-service
 mvn clean package -DskipTests
+```
+#### 2. Build Backend (Go)
+
+```bash
+cd go-task-service
+go build
 ```
 
 #### 2. Frontend (React)
