@@ -1,5 +1,8 @@
+// APIService to interact with the Go Gin backend
+const API_BASE_URL = 'http://localhost:8081/tasks/v1'; // Base URL for your Go Gin API
 // APIService to interact with the real Spring Boot backend
-const API_BASE_URL = 'http://localhost:8080/tasks/v1'; // Base URL for your Spring Boot API
+//const API_BASE_URL = 'http://localhost:8080/tasks/v1'; // Base URL for your Spring Boot API
+
 
 class MockAPIService {
   /**
