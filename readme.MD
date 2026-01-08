@@ -21,14 +21,14 @@ cd go-task-service
 go build
 ```
 
-#### 2. Frontend (React)
+#### 3. Frontend (React)
 
 ```bash
 cd my-react-app
 npm install
 ```
 
-#### 3. Run with Docker (Recommended)
+#### 4. Run with Docker (Recommended)
 
 ```bash
 docker compose up --build
